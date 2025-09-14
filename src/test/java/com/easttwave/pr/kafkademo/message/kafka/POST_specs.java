@@ -1,6 +1,6 @@
-package com.easttwave.pr.kafkademo.message;
+package com.easttwave.pr.kafkademo.message.kafka;
 
-import com.easttwave.pr.kafkademo.message.dto.Message;
+import com.easttwave.pr.kafkademo.message.kafka.dto.Message;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,10 +17,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
-@EmbeddedKafka(partitions = 1,
-        brokerProperties = {"listeners=PLAINTEXT://localhost:9092"},
-        ports = { 9092 }
-)
+//@EmbeddedKafka(partitions = 1,
+//        brokerProperties = {"listeners=PLAINTEXT://localhost:9092"},
+//        ports = { 9092 }
+//)
 public class POST_specs {
 
     @Test

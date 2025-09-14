@@ -1,7 +1,7 @@
-package com.easttwave.pr.kafkademo.message.controller;
+package com.easttwave.pr.kafkademo.message.kafka.controller;
 
 
-import com.easttwave.pr.kafkademo.message.dto.Message;
+import com.easttwave.pr.kafkademo.message.kafka.dto.Message;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;

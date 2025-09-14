@@ -1,4 +1,4 @@
-package com.easttwave.pr.kafkademo.message.dto;
+package com.easttwave.pr.kafkademo.message.kafka.dto;
 
 public record Message(
         Long id,

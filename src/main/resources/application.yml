@@ -1,3 +1,13 @@
 spring:
   application:
     name: kafka-demo
+
+  cloud:
+    aws:
+      region:
+        static: ap-northeast-2
+      credentials:
+          accessKey: AKIA2P5NEL77XC5R3J7M
+          secretKey: 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
+      sqs:
+        enabled: true

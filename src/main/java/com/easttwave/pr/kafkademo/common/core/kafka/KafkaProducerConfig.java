@@ -1,6 +1,6 @@
 package com.easttwave.pr.kafkademo.common.core.kafka;
 
-import com.easttwave.pr.kafkademo.message.dto.Message;
+import com.easttwave.pr.kafkademo.message.kafka.dto.Message;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
