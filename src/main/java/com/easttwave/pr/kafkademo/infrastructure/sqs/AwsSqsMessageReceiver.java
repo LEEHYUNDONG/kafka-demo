@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class AwsSqsMessageReceiver {
 
-    @SqsListener("test-sqs.fifo")
+    @SqsListener("test-sqs")
     public void receiveMessage(String message) {
         log.info("Received SQS Message: {}", message);
     }

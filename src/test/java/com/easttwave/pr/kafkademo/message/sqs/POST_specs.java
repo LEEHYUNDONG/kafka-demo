@@ -36,7 +36,7 @@ public class POST_specs {
     }
 
     @Test
-    void 약_2000건의_메시지를_sqs로_전송히면_204_NoContent를_반환한다(
+    void 약_10건의_메시지를_sqs로_전송히면_204_NoContent를_반환한다(
             @Autowired TestRestTemplate testRestTemplate
     ) throws InterruptedException {
         var url = "/api/v1/sqs-message/send";

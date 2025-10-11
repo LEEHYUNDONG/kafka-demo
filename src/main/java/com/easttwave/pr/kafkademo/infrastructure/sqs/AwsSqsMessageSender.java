@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
 public class AwsSqsMessageSender implements MessageSender{
-    private static final String queueName="test-sqs.fifo";
+    private static final String queueName="test-sqs";
 
     private final ObjectMapper objectMapper;
 

@@ -7,7 +7,8 @@ spring:
       region:
         static: ap-northeast-2
       credentials:
-          accessKey: AKIA2P5NEL77XC5R3J7M
-          secretKey: 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
+        profile-name: general-user  # aws-vault exec로 실행 시에도 동일
       sqs:
-        enabled: true
+        fifo-queue: true
+        content-based-deduplication: true
+        queue-name: test-sqs.fifo
