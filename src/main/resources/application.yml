@@ -8,7 +8,7 @@ spring:
         static: ap-northeast-2
       credentials:
         profile-name: general-user  # aws-vault exec로 실행 시에도 동일
-      sqs:
-        fifo-queue: true
-        content-based-deduplication: true
-        queue-name: test-sqs.fifo
+#      sqs:
+#        fifo-queue: true
+#        content-based-deduplication: true
+#        queue-name: test-sqs.fifo
