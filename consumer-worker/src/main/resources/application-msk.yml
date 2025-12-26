@@ -1,0 +1,21 @@
+# AWS MSK 환경
+application:
+  kafka:
+    # MSK 엔드포인트는 환경 변수로 주입
+    # export KAFKA_BOOTSTRAP_SERVERS="b-1.xxx.kafka.region.amazonaws.com:9092,b-2.xxx.kafka.region.amazonaws.com:9092"
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+
+    # MSK IAM 인증 사용
+    security-protocol: SASL_SSL
+    sasl-mechanism: AWS_MSK_IAM
+    sasl-jaas-config: software.amazon.msk.auth.iam.IAMLoginModule required;
+
+    # 또는 SASL/SCRAM 인증 사용
+    # security-protocol: SASL_SSL
+    # sasl-mechanism: SCRAM-SHA-512
+    # sasl-jaas-config: org.apache.kafka.common.security.scram.ScramLoginModule required username="${KAFKA_USERNAME}" password="${KAFKA_PASSWORD}";
+
+    topic:
+      replication-factor: 2
+      configs:
+        min.insync.replicas: "2"

@@ -1,0 +1,16 @@
+// platform-kafka 모듈: Kafka 인프라 공통 설정
+
+dependencies {
+    // Spring Boot
+    implementation 'org.springframework.boot:spring-boot-starter'
+    api 'org.springframework.kafka:spring-kafka'
+
+    // Jackson (Kafka JsonSerializer/Deserializer에 필요)
+    api 'com.fasterxml.jackson.core:jackson-databind'
+
+    // MSK IAM 인증
+    api 'software.amazon.msk:aws-msk-iam-auth:2.0.3'
+
+    // Configuration Properties
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+}

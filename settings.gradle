@@ -1,1 +1,6 @@
 rootProject.name = 'kafka-demo'
+
+// Multi-Module 구조 (각 모듈은 독립적인 Bounded Context)
+include 'platform-kafka'       // Kafka 인프라 + Message 계약 (DTO)
+include 'producer-api'         // Producer 애플리케이션 (자체 도메인 포함)
+include 'consumer-worker'      // Consumer 애플리케이션
