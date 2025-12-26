@@ -1,4 +1,4 @@
-rootProject.name = 'kafka-demo'
+rootProject.name = 'messaging-demo'
 
 // Multi-Module 구조 (각 모듈은 독립적인 Bounded Context)
 include 'platform'             // Kafka, SQS 등 공통 인프라 + Message 계약 (DTO)

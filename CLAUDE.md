@@ -24,7 +24,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Multi-Module Structure
 
 ```
-kafka-demo/                              [Root Project]
+messaging-demo/                              [Root Project]
 ├── settings.gradle                      - Module definitions
 ├── build.gradle                         - Shared configuration
 │
@@ -221,9 +221,9 @@ application:
     sasl-mechanism: ${KAFKA_SASL_MECHANISM:}
     sasl-jaas-config: ${KAFKA_SASL_JAAS_CONFIG:}
     topic:
-      name: ${KAFKA_TOPIC_NAME:kafka-demo-topic}
+      name: ${KAFKA_TOPIC_NAME:messaging-demo-topic}
     consumer:
-      group-id: ${KAFKA_CONSUMER_GROUP:kafka-demo-consumer-group}
+      group-id: ${KAFKA_CONSUMER_GROUP:messaging-demo-consumer-group}
       concurrency: ${KAFKA_CONSUMER_CONCURRENCY:10}
 ```
 
@@ -263,13 +263,13 @@ Producer and Consumer are **physically separated** into different modules:
 
 ### Consumer Settings
 
-- `group-id`: `kafka-demo-consumer-group` (configurable via env var)
+- `group-id`: `messaging-demo-consumer-group` (configurable via env var)
 - `auto-offset-reset`: `earliest`
 - `concurrency`: 10 concurrent consumers
 
 ### Topic Configuration
 
-- Name: `kafka-demo-topic` (via `application.kafka.topic.name`)
+- Name: `messaging-demo-topic` (via `application.kafka.topic.name`)
 - Partitions: 3
 - Replication Factor: 2 (MSK) / 1 (Local)
 - Retention: 7 days
