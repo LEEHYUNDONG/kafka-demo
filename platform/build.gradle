@@ -1,0 +1,22 @@
+// platform 모듈: Kafka, SQS 등 공통 인프라 설정
+
+dependencies {
+    // Spring Boot
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    // Kafka
+    api 'org.springframework.kafka:spring-kafka'
+
+    // SQS
+    api platform("io.awspring.cloud:spring-cloud-aws-dependencies:3.0.1")
+    api 'io.awspring.cloud:spring-cloud-aws-starter-sqs'
+
+    // Jackson (Kafka JsonSerializer/Deserializer에 필요)
+    api 'com.fasterxml.jackson.core:jackson-databind'
+
+    // MSK IAM 인증
+    api 'software.amazon.msk:aws-msk-iam-auth:2.0.3'
+
+    // Configuration Properties
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+}

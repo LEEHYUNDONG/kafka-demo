@@ -6,7 +6,7 @@ plugins {
 
 dependencies {
     // Platform 모듈 의존성 (Kafka 인프라 + Message 계약)
-    implementation project(':platform-kafka')
+    implementation project(':platform')
 
     // Spring Boot (Web 제외 - Consumer만 필요)
     implementation 'org.springframework.boot:spring-boot-starter'
