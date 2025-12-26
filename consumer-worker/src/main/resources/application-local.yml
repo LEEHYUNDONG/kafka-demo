@@ -1,0 +1,9 @@
+# 로컬 개발 환경 (Docker Compose Kafka)
+application:
+  kafka:
+    bootstrap-servers: localhost:9092
+    security-protocol: PLAINTEXT
+    topic:
+      replication-factor: 1  # 로컬은 1개만
+      configs:
+        min.insync.replicas: "1"  # 로컬은 1개만

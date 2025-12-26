@@ -1,0 +1,26 @@
+// producer-api 모듈: Producer REST API 애플리케이션
+
+plugins {
+    id 'org.springframework.boot'
+}
+
+dependencies {
+    // Platform 모듈 의존성 (Kafka 인프라 + Message 계약)
+    implementation project(':platform-kafka')
+
+    // Spring Boot Web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Test
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+}
+
+// 실행 가능한 Jar 생성
+bootJar {
+    enabled = true
+    archiveFileName = 'producer-api.jar'
+}
+
+jar {
+    enabled = false
+}
