@@ -1,4 +1,4 @@
-package com.easttwave.pr.kafkademo.consumer.message.infrastructure.kafka;
+package com.easttwave.pr.kafkademo.consumer.adapter.in.kafka;
 
 import com.easttwave.pr.kafkademo.platform.kafka.adapter.in.dto.Message;
 import lombok.extern.slf4j.Slf4j;
