@@ -7,23 +7,29 @@ import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsCredentials;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sqs.SqsAsyncClient;
+import software.amazon.awssdk.services.sqs.SqsAsyncClientBuilder;
+
+import java.net.URI;
 
 @Configuration
 public class AmazonSqsConfig {
 
-        @Value("${spring.cloud.aws.region.static}")
+        @Value("${spring.cloud.aws.region.static:ap-northeast-2}")
         private String region;
 
-        @Value("${spring.cloud.aws.credentials.access-key}")
+        @Value("${spring.cloud.aws.credentials.access-key:test}")
         private String accessKey;
 
-        @Value("${spring.cloud.aws.credentials.secret-key}")
+        @Value("${spring.cloud.aws.credentials.secret-key:test}")
         private String secretKey;
+
+        @Value("${spring.cloud.aws.sqs.endpoint:}")
+        private String sqsEndpoint;
 
         // 클라이언트 설정
         @Bean
         public SqsAsyncClient sqsAsyncClient() {
-            return SqsAsyncClient.builder()
+            SqsAsyncClientBuilder builder = SqsAsyncClient.builder()
                     .credentialsProvider(() -> new AwsCredentials() {
                         @Override
                         public String accessKeyId() {
@@ -34,8 +40,14 @@ public class AmazonSqsConfig {
                             return secretKey;
                         }
                     })
-                    .region(Region.of(region))
-                    .build();
+                    .region(Region.of(region));
+
+            // LocalStack endpoint 설정 (로컬 개발 환경)
+            if (sqsEndpoint != null && !sqsEndpoint.isEmpty()) {
+                builder.endpointOverride(URI.create(sqsEndpoint));
+            }
+
+            return builder.build();
         }
 
 //        // Listener Factory 설정

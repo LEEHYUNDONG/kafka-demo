@@ -1,4 +1,4 @@
-# 로컬 개발 환경 (Docker Compose Kafka)
+# 로컬 개발 환경 (Docker Compose Kafka + LocalStack SQS)
 application:
   kafka:
     bootstrap-servers: localhost:9092
@@ -7,3 +7,22 @@ application:
       replication-factor: 1  # 로컬은 1개만
       configs:
         min.insync.replicas: "1"  # 로컬은 1개만
+
+# AWS LocalStack Configuration
+spring:
+  cloud:
+    aws:
+      region:
+        static: ap-northeast-2
+      credentials:
+        access-key: test
+        secret-key: test
+      sqs:
+        endpoint: http://localhost:4566
+      endpoint: http://localhost:4566
+
+# SQS Queue Configuration
+aws:
+  sqs:
+    queue-name: messaging-demo-queue
+    fifo-queue-name: messaging-demo-queue.fifo

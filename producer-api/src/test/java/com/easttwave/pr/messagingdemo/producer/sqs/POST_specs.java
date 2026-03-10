@@ -1,6 +1,6 @@
 package com.easttwave.pr.messagingdemo.producer.sqs;
 
-import com.easttwave.pr.messagingdemo.platform.sqs.dto.SqsMessage;
+import com.easttwave.pr.messagingdemo.producer.infrastructure.sqs.dto.SqsMessage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

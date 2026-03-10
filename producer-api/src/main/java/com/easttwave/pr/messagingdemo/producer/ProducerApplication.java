@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication(scanBasePackages = {
     "com.easttwave.pr.messagingdemo.producer",
-    "com.easttwave.pr.messagingdemo.platform"
+        "com.easttwave.pr.messagingdemo.platform"
 })
 @ConfigurationPropertiesScan("com.easttwave.pr.messagingdemo.platform.config")
 public class ProducerApplication {

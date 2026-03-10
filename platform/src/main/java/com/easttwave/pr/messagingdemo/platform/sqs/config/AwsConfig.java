@@ -1,6 +1,7 @@
 package com.easttwave.pr.messagingdemo.platform.sqs.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
@@ -9,9 +10,10 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sqs.SqsClient;
 
 @Configuration
+@ConditionalOnProperty(name = "aws.sqs.use-profile", havingValue = "true")
 public class AwsConfig {
 
-    @Value("${spring.cloud.aws.credentials.profile-name}")
+    @Value("${spring.cloud.aws.credentials.profile-name:default}")
     private String profileName;
 
     @Bean

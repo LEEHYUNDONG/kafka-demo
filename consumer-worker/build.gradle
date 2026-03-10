@@ -8,8 +8,15 @@ dependencies {
     // Platform 모듈 의존성 (Kafka 인프라 + Message 계약)
     implementation project(':platform')
 
-    // Spring Boot (Web 제외 - Consumer만 필요)
+    // Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter'
+
+    // Web (Actuator 메트릭 엔드포인트 노출을 위해 필요)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Monitoring & Metrics
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
 
     // Test
     testImplementation 'org.springframework.kafka:spring-kafka-test'

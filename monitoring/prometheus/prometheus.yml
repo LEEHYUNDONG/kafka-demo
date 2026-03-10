@@ -1,0 +1,40 @@
+global:
+  scrape_interval: 15s  # 메트릭 수집 주기
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'messaging-demo-local'
+
+# Alertmanager 설정 (선택사항)
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets: ['alertmanager:9093']
+
+# 스크래핑 대상 설정
+scrape_configs:
+  # Prometheus 자체 모니터링
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Producer API 메트릭
+  - job_name: 'producer-api'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: 'producer-api'
+
+  # Consumer Worker 메트릭
+  - job_name: 'consumer-worker'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['host.docker.internal:8081']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: 'consumer-worker'

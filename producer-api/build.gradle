@@ -5,11 +5,24 @@ plugins {
 }
 
 dependencies {
-    // Platform 모듈 의존성 (Kafka 인프라 + Message 계약)
     implementation project(':platform')
-
     // Spring Boot Web
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Kafka (이전 platform 모듈에서 가져옴)
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'software.amazon.msk:aws-msk-iam-auth:2.0.3'
+
+    // AWS SQS (이전 platform 모듈에서 가져옴)
+    implementation platform("io.awspring.cloud:spring-cloud-aws-dependencies:3.0.1")
+    implementation 'io.awspring.cloud:spring-cloud-aws-starter-sqs'
+
+    // JSON Serialization
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    // Monitoring & Metrics
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
 
     // Test
     testImplementation 'org.springframework.kafka:spring-kafka-test'

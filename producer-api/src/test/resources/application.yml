@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: kafka-demo-producer-test
+  cloud:
+    aws:
+      region:
+        static: ap-northeast-2
+      credentials:
+        access-key: test
+        secret-key: test
+      sqs:
+        endpoint: http://localhost:4566
+
+server:
+  port: 0  # Random port for tests
+
+# Actuator (테스트에서는 비활성화)
+management:
+  endpoints:
+    enabled-by-default: false
+
+# Kafka 설정 (테스트용)
+application:
+  kafka:
+    bootstrap-servers: localhost:9092
+    client-id: kafka-demo-test
+    security-protocol: PLAINTEXT
+    consumer:
+      group-id: kafka-demo-test-group
+      auto-offset-reset: earliest
+      concurrency: 1
+    producer:
+      enable-adaptive-partitioning: false
+      acks: all
+      retries: 3
+      max-in-flight-requests: 5
+    topic:
+      name: test-topic
+      partitions: 1
+      replication-factor: 1
+      configs:
+        retention.ms: "604800000"
+        min.insync.replicas: "1"
